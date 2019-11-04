@@ -1,5 +1,6 @@
 # Asp.Net.Core-EF.Core-DbFirst-.Net.Test.Sdk
 An example of Asp.Net core web api using EntityFrameWork core, database first as well as .Net Test SDK and auto mapping.
+This project is build with VS2019
 
 ## Requirement
 ### Technical Requirement: 
@@ -16,7 +17,67 @@ AspnetCore EF Core .netStandard and Microsoft.NET.Test.Sdk
 * One manager can manage many clients, while one client only belongs to one manager, therefore Managers and Clients are one-many  relationship.
 * We also want to demostrate how to handle the 'base type' scenario in the project, where the Users will be implemented as a base type of *  Managers and Clients.
   
-  ![Database table design]("/images/db%20diagram.PNG")
+  ![Database table design](/images/db-diagram.PNG)
 
-  ## Lets code!
-  ### 
+## Lets code!
+### Create UserManagement.UserAPI
+
+#### Create asp.net core web api
+![Create asp.net core web api](/images/create-asp.net-core-web-application.PNG)
+#### choose location
+![choose location](/images/choose-location.PNG)
+#### select API project
+![select API project](/images/select-API-project.PNG)
+#### The new project may look like this:
+![project created](/images/project-created.PNG)
+
+### Install Entity Framework
+Open Tools -> NuGet Package Manager -> Package Manager Console
+Run the following commands one by one:
+''' Package Manager Console Commands
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+Install-Package Microsoft.EntityFrameworkCore.Tools –Pre
+Install-Package Microsoft.EntityFrameworkCore.SqlServer.Design
+'''
+### Create Models
+Create a folder Models in the project 
+Again, open Tools -> NuGet Package Manager -> Package Manager Console
+Run (You need to change database connection string accordingly)
+''' Package Manager Console Commands
+Scaffold-DbContext "Server=(local)\SqlExpress;Database=UserManagement;UID=sa;PWD=sa12345;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+'''
+Now the code has models in it:
+![models created](/images/models-created.PNG)
+
+### Config models
+Delete the entire method OnConfiguring() in UserManagementContext.cs.
+Open Startup.cs, and add this line of code at the end of ConfigureServices():
+''' Don't forget to resolve namespace reference using VS2019 code suggestion
+services.AddDbContext<UserManagementContext>(item => item.UseSqlServer(Configuration.GetConnectionString("UserManagementConnection")));
+'''
+Open appsettings.json, modify it as:
+''' appsettings.json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DomainConnection": "Server=(local)\\SqlExpress;Database=UserManagement;UID=sa;PWD=sa12345;"
+  }
+}
+'''
+### Create controller
+Right click on Controller folder, 'Add -> Controller...'
+Select 'API Controller with read/write actions'
+Click 'Add'
+Enter 'UserAPIController'
+
+
+ 
+
+

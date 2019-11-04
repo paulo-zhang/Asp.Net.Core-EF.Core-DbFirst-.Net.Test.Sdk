@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs
+/UserManagement.UserAPI/bin/Debug/netcoreapp3.0
+/UserManagement.UserAPI/obj
+*.user
