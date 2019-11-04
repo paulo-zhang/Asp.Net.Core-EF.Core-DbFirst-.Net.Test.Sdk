@@ -41,7 +41,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer.Design
 ```
 ### Create Models
 Create a folder Models in the project 
-Again, open Tools -> NuGet Package Manager -> Package Manager Console
+Again, open Tools -> NuGet Package Manager -> Package Manager Console.
 Run (You need to change database connection string accordingly)
 ``` Package Manager Console Commands
 Scaffold-DbContext "Server=(local)\SqlExpress;Database=UserManagement;UID=sa;PWD=sa12345;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
@@ -73,8 +73,11 @@ Open appsettings.json, modify it as:
 ```
 ### Create controller
 Right click on Controller folder, 'Add -> Controller...'.
+
 Select 'API Controller with read/write actions'.
+
 Click 'Add'.
+
 Enter 'UserAPIController'.
 
 
