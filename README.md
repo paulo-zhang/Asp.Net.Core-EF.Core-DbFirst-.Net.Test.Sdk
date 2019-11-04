@@ -34,29 +34,29 @@ AspnetCore EF Core .netStandard and Microsoft.NET.Test.Sdk
 ### Install Entity Framework
 Open Tools -> NuGet Package Manager -> Package Manager Console
 Run the following commands one by one:
-''' Package Manager Console Commands
+``` Package Manager Console Commands
 Install-Package Microsoft.EntityFrameworkCore.SqlServer
 Install-Package Microsoft.EntityFrameworkCore.Tools –Pre
 Install-Package Microsoft.EntityFrameworkCore.SqlServer.Design
-'''
+```
 ### Create Models
 Create a folder Models in the project 
 Again, open Tools -> NuGet Package Manager -> Package Manager Console
 Run (You need to change database connection string accordingly)
-''' Package Manager Console Commands
+``` Package Manager Console Commands
 Scaffold-DbContext "Server=(local)\SqlExpress;Database=UserManagement;UID=sa;PWD=sa12345;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
-'''
+```
 Now the code has models in it:
 ![models created](/images/models-created.PNG)
 
 ### Config models
 Delete the entire method OnConfiguring() in UserManagementContext.cs.
 Open Startup.cs, and add this line of code at the end of ConfigureServices():
-''' Don't forget to resolve namespace reference using VS2019 code suggestion
+``` Don't forget to resolve namespace reference using VS2019 code suggestion
 services.AddDbContext<UserManagementContext>(item => item.UseSqlServer(Configuration.GetConnectionString("UserManagementConnection")));
-'''
+```
 Open appsettings.json, modify it as:
-''' appsettings.json
+``` appsettings.json
 {
   "Logging": {
     "LogLevel": {
@@ -70,7 +70,7 @@ Open appsettings.json, modify it as:
     "DomainConnection": "Server=(local)\\SqlExpress;Database=UserManagement;UID=sa;PWD=sa12345;"
   }
 }
-'''
+```
 ### Create controller
 Right click on Controller folder, 'Add -> Controller...'
 Select 'API Controller with read/write actions'
