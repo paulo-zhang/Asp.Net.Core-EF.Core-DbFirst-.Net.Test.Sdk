@@ -16,4 +16,4 @@ AspnetCore EF Core .netStandard and Microsoft.NET.Test.Sdk
 * One manager can manage many clients, while one client only belongs to one manager, therefore Managers and Clients are one-many  relationship.
 *  We also want to demostrate how to handle the 'base type' scenario in the project, where the Users will be implemented as a base type of *  Managers and Clients.
   
-  ![Database table design]("/images/db diagram.PNG")
+  ![Database table design]("/images/db%20diagram.PNG")
