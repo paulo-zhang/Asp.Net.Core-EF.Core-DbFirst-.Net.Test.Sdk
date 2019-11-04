@@ -11,9 +11,9 @@ AspnetCore EF Core .netStandard and Microsoft.NET.Test.Sdk
 * Unit test the api controller.
 
 ## Database design
-  Since the Managers and Clients share most of their properties, we have a 'base' tabse Users.
-  The Managers and Clients table have a foreign key that points to the Users table, these are one-one relationship.
-  One manager can manage many clients, while one client only belongs to one manager, therefore Managers and Clients are one-many  relationship.
-  We also want to demostrate how to handle the 'base type' scenario in the project, where the Users will be implemented as a base type of   Managers and Clients.
+* Since the Managers and Clients share most of their properties, we have a 'base' tabse Users.
+* The Managers and Clients table have a foreign key that points to the Users table, these are one-one relationship.
+* One manager can manage many clients, while one client only belongs to one manager, therefore Managers and Clients are one-many  relationship.
+*  We also want to demostrate how to handle the 'base type' scenario in the project, where the Users will be implemented as a base type of *  Managers and Clients.
   
-  ![Database table design]('/images/db diagram.PNG')
+  ![Database table design]("/images/db diagram.PNG")
