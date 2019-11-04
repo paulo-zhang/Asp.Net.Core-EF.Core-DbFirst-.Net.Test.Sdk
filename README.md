@@ -1,6 +1,7 @@
 # Asp.Net.Core-EF.Core-DbFirst-.Net.Test.Sdk
 An example of Asp.Net core web api using EntityFrameWork core, database first as well as .Net Test SDK and auto mapping.
-This project is build with VS2019
+
+This project is built with VS2019
 
 ## Requirement
 ### Technical Requirement: 
@@ -47,6 +48,7 @@ Run (You need to change database connection string accordingly)
 Scaffold-DbContext "Server=(local)\SqlExpress;Database=UserManagement;UID=sa;PWD=sa12345;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
 ```
 Now the code has models in it:
+
 ![models created](/images/models-created.PNG)
 
 ### Config models
