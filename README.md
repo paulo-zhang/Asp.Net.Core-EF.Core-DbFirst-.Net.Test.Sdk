@@ -4,10 +4,10 @@ This project is build with VS2019
 
 ## Requirement
 ### Technical Requirement: 
-AspnetCore EF Core .netStandard and Microsoft.NET.Test.Sdk 
+AspnetCore EF Core .netStandard and Microsoft.NET.Test.Sdk.
 ### Business Requirement: 
 * An user management web api solution that can add, update, delete and query users to a database.
-* The Users are broken in to two types: Managers and Clients
+* The Users are broken in to two types: Managers and Clients.
 * Managers will have an additional 'Position' property (Junior, Senior) and Clients will have an int 'Level' property.
 * Unit test the api controller.
 
@@ -32,7 +32,7 @@ AspnetCore EF Core .netStandard and Microsoft.NET.Test.Sdk
 ![project created](/images/project-created.PNG)
 
 ### Install Entity Framework
-Open Tools -> NuGet Package Manager -> Package Manager Console
+Open Tools -> NuGet Package Manager -> Package Manager Console.
 Run the following commands one by one:
 ``` Package Manager Console Commands
 Install-Package Microsoft.EntityFrameworkCore.SqlServer
@@ -72,10 +72,11 @@ Open appsettings.json, modify it as:
 }
 ```
 ### Create controller
-Right click on Controller folder, 'Add -> Controller...'
-Select 'API Controller with read/write actions'
-Click 'Add'
-Enter 'UserAPIController'
+Right click on Controller folder, 'Add -> Controller...'.
+Select 'API Controller with read/write actions'.
+Click 'Add'.
+Enter 'UserAPIController'.
+
 
 
  
