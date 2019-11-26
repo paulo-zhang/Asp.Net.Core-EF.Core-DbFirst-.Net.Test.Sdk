@@ -1,5 +1,5 @@
 # Asp.Net.Core-EF.Core-DbFirst-.Net.Test.Sdk
-An example of Asp.Net core web api using EntityFrameWork core, database first as well as .Net Test SDK and auto mapping.
+An example of Asp.Net core web api using Entity Framework core, database first as well as .Net Test SDK and auto mapping.
 
 This project is built with VS2019
 
@@ -82,14 +82,24 @@ Open appsettings.json, modify it as:
 }
 ```
 ### Create controller
-Right click on Controller folder, 'Add -> Controller...'.
+Right click on Controllers folder, 'Add -> Controller...'.
 
 Select 'API Controller with read/write actions'.
 
 Click 'Add'.
 
 Enter 'UserAPIController'.
+UserAPIController.cs is created in Controllers.
 
+### Create ViewModels
+ViewModels are used to represent the data structure that sent to UI.
+
+With Entity Framework, it's easy to implement a 'Table Per Hierarchy' relationship and 'Table Per Type' relationship:
+``` Entity Framework Implementations
+https://docs.microsoft.com/en-us/ef/ef6/modeling/designer/inheritance/tph?redirectedfrom=MSDN
+https://docs.microsoft.com/en-us/ef/ef6/modeling/designer/inheritance/tpt
+``` 
+However, this is untrue for Entity Framework Core.
 
 
  

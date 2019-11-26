@@ -11,36 +11,118 @@ namespace UserManagement.UserAPI.Controllers
     [ApiController]
     public class UserAPIController : ControllerBase
     {
-        // GET: api/UserAPI
-        [HttpGet]
-        public IEnumerable<string> Get()
+        // GET: api/Users/GetAllManagers
+        /// <summary>
+        /// Retreive all Managers with their associated clients
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetAllManagers")]
+        public ActionResult<IEnumerable<ManagerViewModel>> GetAllManagers()
         {
-            return new string[] { "value1", "value2" };
+            return new ActionResult<IEnumerable<ManagerViewModel>>(userRepository.GetAllManagers());
         }
 
-        // GET: api/UserAPI/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        // GET: api/Users/GetClient/{id}
+        [HttpGet("GetClient/{id}")]
+        public ActionResult<ClientViewModel> GetClient(int id)
         {
-            return "value";
+            return new ActionResult<ClientViewModel>(userRepository.GetClient(id));
         }
 
-        // POST: api/UserAPI
+        // GET: api/Users/GetManager/{id}
+        [HttpGet("GetManager/{id}")]
+        public ActionResult<ManagerViewModel> GetManager(int id)
+        {
+            return new ActionResult<ManagerViewModel>(userRepository.GetManager(id));
+        }
+
+        // GET: api/Users/GetClient
+        /// <summary>
+        /// - Retreive all Clients including their Manager
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetAllClients")]
+        public ActionResult<IEnumerable<ClientViewModel>> GetAllClients()
+        {
+            return new ActionResult<IEnumerable<ClientViewModel>>(userRepository.GetAllClients());
+        }
+
+        // HTTP test tool: {"Level":2,"UserName":"client1","Email":"client1@gmail.com","Alias":"Alias1","FirstName":"Sally","LastName":"Jhonson"}
+        // POST: api/Users
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("AddClient")]
+        public ActionResult<int> AddClient([FromBody] ClientViewModel client)
         {
+            this.ValidateViewModel(client);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var clientId = userRepository.AddClient(client);
+
+            if (clientId > 0)
+            {
+                return clientId;
+            }
+
+            return BadRequest();
         }
 
-        // PUT: api/UserAPI/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // HTTP test tool: {"Level":2,"UserName":"manager1","Email":"client1@gmail.com","Alias":"Alias1","FirstName":"Sally","LastName":"Jhonson", "Position": "Junior"}
+        // POST: api/Users
+        [HttpPost]
+        [Route("AddManager")]
+        public ActionResult<int> AddManager([FromBody] ManagerViewModel manager)
         {
+            this.ValidateViewModel(manager);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var managerId = userRepository.AddManager(manager);
+
+            if (managerId > 0)
+            {
+                return managerId;
+            }
+
+            return BadRequest();
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // PUT: api/Users/UpdateClient
+        [HttpPost]
+        [Route("UpdateClient")]
+        public ActionResult<int> UpdateClient(ClientViewModel client)
         {
+            return userRepository.UpdateClient(client);
+        }
+
+        // DELETE: api/Users/DeleteClient/5
+        [HttpDelete("DeleteClient/{id}")]
+        public ActionResult<int> DeleteClient(int id)
+        {
+            return userRepository.DeleteClient(id);
+        }
+
+        // DELETE: api/Users/DeleteManager/5
+        [HttpDelete("DeleteManager/{id}")]
+        public ActionResult<int> DeleteManager(int id)
+        {
+            return userRepository.DeleteManager(id);
+        }
+
+        /// <summary>
+        /// - For a specified Manager username, retreive a list of its clients
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("GetClientsByManagerUserName")]
+        public ActionResult<IEnumerable<ClientViewModel>> GetClientsByManagerUserName(string userName)
+        {
+            return new ActionResult<IEnumerable<ClientViewModel>>(userRepository.GetClientsByManagerUsername(userName));
         }
     }
 }
