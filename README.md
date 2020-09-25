@@ -107,4 +107,6 @@ Here, it's just some simple viewmodel examples, which look similar to models.
 AutoMaper is used to simplify the data convertion between models and viewmodels.
 However, you can write your own mapping logic.
 
+### Unit Test
+Unit test is easy with xUnit, NUnit or MS Unit Test.
 
