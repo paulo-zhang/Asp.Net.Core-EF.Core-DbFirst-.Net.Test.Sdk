@@ -17,7 +17,7 @@ namespace UserManagement.UserAPI.Test
         private UserAPIController usersController;
         public UserAPIControllerTest()
         {
-            // Use database to test here, we could mock DomainContext if we only need to test controller.
+            // Use database to test here, we could mock UserManagementContext if we only need to test controller.
             var optionsBuilder = new DbContextOptionsBuilder<UserManagementContext>();
             optionsBuilder.UseSqlServer(@"Server=localhost\SQLExpress;Database=UserManagement;UID=sa;PWD=Abcd1234;");
             UserManagementContext domainContext = new UserManagementContext(optionsBuilder.Options);
