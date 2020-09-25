@@ -100,8 +100,11 @@ https://docs.microsoft.com/en-us/ef/ef6/modeling/designer/inheritance/tph?redire
 https://docs.microsoft.com/en-us/ef/ef6/modeling/designer/inheritance/tpt
 ``` 
 However, this is untrue for Entity Framework Core.
-
-
+ViewModels are typically used to represent data to view, by doing this, we can tailor-made data structure for view to bind.
+Here, it's just some simple viewmodel examples, which look similar to models.
  
+### Use AutoMaper
+AutoMaper is used to simplify the data convertion between models and viewmodels.
+However, you can write your own mapping logic.
 
 
