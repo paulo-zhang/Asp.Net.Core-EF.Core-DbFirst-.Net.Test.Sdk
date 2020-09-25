@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UserManagement.UserAPI.Repositories;
+using UserManagement.UserAPI.Validations;
+using UserManagement.UserAPI.ViewModels;
 
 namespace UserManagement.UserAPI.Controllers
 {
@@ -11,6 +14,12 @@ namespace UserManagement.UserAPI.Controllers
     [ApiController]
     public class UserAPIController : ControllerBase
     {
+        private IUserRepository userRepository;
+        public UserAPIController(IUserRepository _userRepository)
+        {
+            userRepository = _userRepository;
+        }
+
         // GET: api/Users/GetAllManagers
         /// <summary>
         /// Retreive all Managers with their associated clients
