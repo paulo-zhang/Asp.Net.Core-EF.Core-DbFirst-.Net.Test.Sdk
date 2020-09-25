@@ -7,3 +7,5 @@
 /UserManagement.UserAPI/obj
 *.user
 /packages
+/UserManagement.UserAPI.Test/obj
+/UserManagement.UserAPI.Test/bin/Debug/netcoreapp3.1
