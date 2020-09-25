@@ -105,6 +105,6 @@ Here, it's just some simple viewmodel examples, which look similar to models.
  
 ### Use AutoMaper
 AutoMaper is used to simplify the data convertion between models and viewmodels.
-However, you can writing your own mapping logic.
+However, you can write your own mapping logic.
 
 
