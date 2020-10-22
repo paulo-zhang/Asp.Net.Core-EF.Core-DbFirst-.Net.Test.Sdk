@@ -108,7 +108,7 @@ AutoMaper is used to simplify the data convertion between models and viewmodels.
 However, you can write your own mapping logic.
 
 ### Testability
-In order to increase the testability of controllers, the dependencies of them are injected in Startup.cs:
+In order to increase the testability of the controller, the dependencies of it are injected in Startup.cs:
 ``` Inject controller dependencies
 // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
