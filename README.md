@@ -107,6 +107,30 @@ Here, it's just some simple viewmodel examples, which look similar to models.
 AutoMaper is used to simplify the data convertion between models and viewmodels.
 However, you can write your own mapping logic.
 
+### Testability
+In order to increase the testability of controllers, the dependencies of them are injected in Startup.cs:
+``` Inject controller dependencies
+// This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<UserManagementContext>(item => item.UseSqlServer(Configuration.GetConnectionString("UserManagementConnection")));
+            services.AddScoped<IUserRepository, UserRepository>();
+            
+            services.AddControllers();
+        }
+``` 
+
 ### Unit Test
 Unit test is easy with xUnit, NUnit or MS Unit Test.
 
